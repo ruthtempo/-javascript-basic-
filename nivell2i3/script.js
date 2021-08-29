@@ -1,4 +1,4 @@
-
+// funcio calculadora
 function calcular(operador, valor1, valor2){
     if (operador === "-"){
         return valor1 - valor2;
@@ -13,9 +13,11 @@ function calcular(operador, valor1, valor2){
     }
 }
 
-var resultat = calcular('-',40,20);
+var resultado = calcular('-',40,20);
 
-console.log(resultat)
+console.log(resultado)
+
+// calculadora completa
 
 function checkIfOperator(label){
     if(label=== "+" || label === "-" || label==="x" || label=== "/" ){
@@ -40,6 +42,7 @@ function checkIfNumber(label){
 }
 
 let value1, operator, value2;
+let resultat 
 
 document.addEventListener("click", function(event){
     // console.log(event, label);
@@ -69,16 +72,20 @@ document.addEventListener("click", function(event){
         if(checkIfNumber(label)){
             value2= parseInt(label)
             document.getElementById("input").value = value2
+           
         }
         
     // result
-    }else{
-        if(label === "="){
+    }else if(label === "="){
+        if(operator ==="/" && value2 === 0){
+            document.getElementById("input").value = "error"
+            value2=undefined
+        }else{
             resultat= calcular(operator, value1, value2)
             document.getElementById("input").value = resultat
         }
-        
     }
+        
     console.log("value1:", value1)
     console.log("operator:", operator)
     console.log("value2:", value2)
