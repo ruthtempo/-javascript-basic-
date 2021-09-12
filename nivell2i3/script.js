@@ -81,13 +81,28 @@ document.addEventListener("click", function(event){
             document.getElementById("input").value = "error"
             value2=undefined
         }else{
-            resultat= calcular(operator, value1, value2)
+            resultat = calcular(operator, value1, value2)
             document.getElementById("input").value = resultat
         }
     }
+
+    // when there is a result in calcultor and I click a number, 
+    // it starts a new calculation and it gets saved to value 1
         
     console.log("value1:", value1)
     console.log("operator:", operator)
     console.log("value2:", value2)
     console.log("resultat:", resultat)
+
+    if(resultat && checkIfNumber(label)){
+        value1= parseInt(label);
+        value2=undefined;
+        resultat=undefined;
+    }
+
+    if(resultat && checkIfOperator(label)){
+        value1= resultat;
+        value2=undefined;
+        resultat=undefined; 
+    }
 });
